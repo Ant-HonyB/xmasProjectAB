@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>300</width>
-    <height>326</height>
+    <width>280</width>
+    <height>341</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,27 +22,6 @@
         <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
        </property>
       </widget>
-     </item>
-     <item row="5" column="0">
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <item>
-        <widget class="QCheckBox" name="checkBox_3">
-         <property name="text">
-          <string>Taille : S  </string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>Qt:</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QSpinBox" name="sbQuantity"/>
-       </item>
-      </layout>
      </item>
      <item row="4" column="0">
       <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -93,7 +72,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Mon interface de gestion de marchandises</string>
+        <string>Veuillez choisir les modalités de livraison</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -107,54 +86,69 @@
        </property>
       </widget>
      </item>
-     <item row="6" column="0">
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <item>
-        <widget class="QCheckBox" name="checkBox_2">
-         <property name="text">
-          <string>Taille : M</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_6">
-         <property name="text">
-          <string>Qt:</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QSpinBox" name="sbQuantity_2"/>
-       </item>
-      </layout>
-     </item>
-     <item row="7" column="0">
-      <layout class="QHBoxLayout" name="horizontalLayout_3">
-       <item>
-        <widget class="QCheckBox" name="checkBox">
-         <property name="text">
-          <string>Taille : L</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_7">
-         <property name="text">
-          <string>Qt:</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QSpinBox" name="sbQuantity_3"/>
-       </item>
-      </layout>
-     </item>
      <item row="2" column="0">
       <widget class="Line" name="line">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
       </widget>
+     </item>
+     <item row="5" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <item>
+        <widget class="QLabel" name="label_9">
+         <property name="text">
+          <string>Taille : </string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <widget class="QCheckBox" name="checkBox_7">
+           <property name="text">
+            <string>S</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="checkBox_8">
+           <property name="text">
+            <string>M</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="checkBox_9">
+           <property name="text">
+            <string>L</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item row="7" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout"/>
+     </item>
+     <item row="3" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Nom du client :</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit">
+         <property name="placeholderText">
+          <string>ex : Jacques Dutronc</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
    </item>
