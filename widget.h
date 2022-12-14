@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QTcpServer>
 #include <QTcpSocket>
+#include <QMap>
+#include "package.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -20,12 +22,12 @@ public:
 private slots:
     void clientConnected();
     void clientDisconnected();
-    void dataIsComing();
+    void sendData();
 
 
 private:
     Ui::Widget *ui;
-    QTcpServer* mServer;
-    QList<QTcpSocket*> mClients;
+    QTcpSocket* mSocket;
+    QMap<QString,Package> mPackageTypes;
 };
 #endif // WIDGET_H

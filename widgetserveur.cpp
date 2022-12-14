@@ -1,35 +1,34 @@
-#include "widget.h"
-#include "./ui_widget.h"
+#include "widgetserveur.h"
+#include "ui_widgetserveur.h"
 
-Widget::Widget(QWidget *parent)
-    : QWidget(parent)
-    , ui(new Ui::Widget)
+WidgetServeur::WidgetServeur(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::WidgetServeur)
 {
     ui->setupUi(this);
-    /*mServer = new QTcpServer(this);
-    connect(mServer,SIGNAL(newConnection()),this,SLOT(clientConnected()));
-    mServer->listen(QHostAddress::Any,9090);*/
+
 }
 
-Widget::~Widget()
+WidgetServeur::~WidgetServeur()
 {
     delete ui;
 }
 
-void Widget::clientConnected()
+
+void WidgetServeur::clientConnected()
 {
      /*QTcpSocket* sockClient = mServer->nextPendingConnection();
      mClients << sockClient;
      connect(sockClient,SIGNAL(readyRead()),this,SLOT(dataIsComing()));
      connect(sockClient,SIGNAL(disconnected()),this,SLOT(clientDisconnected()));*/
 }
-void Widget::clientDisconnected()
+void WidgetServeur::clientDisconnected()
 {
     /*QTcpSocket* sock = (QTcpSocket*)sender();
     mClients.removeAll(sock);
     sock->deleteLater();*/
 }
-void Widget::sendData()
+void WidgetServeur::dataIsComing()
 {
     /*QTcpSocket* sock = (QTcpSocket*)sender();
     QByteArray data = sock->readAll();
