@@ -27,7 +27,7 @@ float Package::getVolume()
 void Package::setWeight()
 {
     mWeight = ((float)(rand() % (500 - 10 + 1)) + 10.0)/10.0;
-    qDebug() << "myWeight init : " << mWeight;
+
 }
 
 float Package::getWeight()
@@ -38,6 +38,11 @@ float Package::getWeight()
 void Package::setClient(QString cl)
 {
     mClient = cl;
+}
+
+QString Package::getClient()
+{
+    return mClient;
 }
 
 void Package::setDestination(QString dstn)

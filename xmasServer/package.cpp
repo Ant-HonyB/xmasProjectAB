@@ -27,7 +27,7 @@ float Package::getVolume()
 void Package::setWeight()
 {
     mWeight = ((float)(rand() % (500 - 10 + 1)) + 10.0)/10.0;
-    qDebug() << "myWeight init : " << mWeight;
+
 }
 
 float Package::getWeight()
