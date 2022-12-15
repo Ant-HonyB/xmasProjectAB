@@ -7,12 +7,10 @@ Widget::Widget(QWidget *parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
+    mSocket = new QTcpSocket;
 
     //1 : l'utilisateur se connecte
     connect(ui->pbConnexion,SIGNAL(clicked()),this,SLOT(linkToIP()));
-
-    connect(mSocket,SIGNAL(connected()),this,SLOT(imConnected()));
-    connect(mSocket,SIGNAL(readyRead()),this,SLOT(dataIsComing()));
 
     //2 : paramètrage des colis en fonction du type possible (A, B, C)
     Package packA(13,14,15);
@@ -35,9 +33,12 @@ Widget::~Widget()
 
 void Widget::linkToIP()
 {
-    ip = ui->editIP->text();
-    mSocket->connectToHost(ip,port);
-    qDebug() << "my ip : " << ip;
+    //ip = ui->editIP->text();
+    //mSocket->connectToHost("ip",port);
+    //qDebug() << "my ip : " << ip;
+    connect(mSocket,SIGNAL(connected()),this,SLOT(imConnected()));
+    connect(mSocket,SIGNAL(readyRead()),this,SLOT(dataIsComing()));
+    mSocket->connectToHost("127.0.0.1",9090);
 }
 
 void Widget::imConnected()

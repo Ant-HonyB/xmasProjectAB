@@ -6,9 +6,10 @@ Widget::Widget(QWidget *parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
-        mServer = new QTcpServer(this);
-        connect(mServer,SIGNAL(newConnection()),this,SLOT(clientConnected()));
-        mServer->listen(QHostAddress::Any,9090);
+
+    mServer = new QTcpServer(this);
+    connect(mServer,SIGNAL(newConnection()),this,SLOT(clientConnected()));
+    mServer->listen(QHostAddress::Any,4044);
     }
 
     Widget::~Widget()
@@ -21,14 +22,13 @@ Widget::Widget(QWidget *parent)
         QTcpSocket* sockClient = mServer->nextPendingConnection();
         connect(sockClient,SIGNAL(readyRead()),this,SLOT(dataIsComing()));
         connect(sockClient,SIGNAL(disconnected()),sockClient,SLOT(deleteLater()));
-        qDebug() << "qqun frappe à la porte" << sockClient->peerAddress().toString();
-
-        sockClient->write("Coucou");
+        qDebug() << "Un nouveau client se connecte : " << sockClient->peerAddress().toString();
+        sockClient->write("Bonjour !");
     }
 
-    void Widget::dataIsComing()
+    void Widget::dataFromClient()
     {
         QTcpSocket* sock = (QTcpSocket*)sender();
-        qDebug() << "Message recu depuis" << sock->peerAddress().toString() << ":"<< sock->readAll();
+        qDebug() << "Colis demandé par le client" << sock->peerAddress().toString() << ":"<< sock->readAll();
     }
 
