@@ -22,7 +22,7 @@ public:
 
 private slots:
     void clientConnected();
-    void dataFromClient();
+    void dataIsComing();
 
 private:
     Ui::Widget *ui;

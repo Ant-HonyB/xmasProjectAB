@@ -27,7 +27,6 @@ float Package::volume()
 void Package::setWeight()
 {
     mWeight = ((float)(rand() % (500 - 10 + 1)) + 10.0)/10.0;
-    qDebug() << "myWeight init : " << mWeight;
 }
 
 void Package::setClient(QString cl)
@@ -55,9 +54,9 @@ QByteArray Package::toJSON()
         QByteArray sJson = d.toJson(QJsonDocument::Compact);
 
         //QJsonObject oRecu = QJsonDocument::fromJson(sJson).object();
-
         //qDebug() << "Nom" << oRecu["client"].toString();
-    return  sJson; //just for compilation
+
+    return  sJson;
 }
 
 void Package::fromJSON(QByteArray colInfo)

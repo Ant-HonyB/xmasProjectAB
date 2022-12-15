@@ -9,26 +9,30 @@ Widget::Widget(QWidget *parent)
 
     mServer = new QTcpServer(this);
     connect(mServer,SIGNAL(newConnection()),this,SLOT(clientConnected()));
-    mServer->listen(QHostAddress::Any,4044);
+    mServer->listen(QHostAddress::Any,9090);
+
     }
 
     Widget::~Widget()
     {
         delete ui;
     }
-
     void Widget::clientConnected()
     {
         QTcpSocket* sockClient = mServer->nextPendingConnection();
         connect(sockClient,SIGNAL(readyRead()),this,SLOT(dataIsComing()));
         connect(sockClient,SIGNAL(disconnected()),sockClient,SLOT(deleteLater()));
-        qDebug() << "Un nouveau client se connecte : " << sockClient->peerAddress().toString();
-        sockClient->write("Bonjour !");
+        qDebug() << "nouveau client, ip : " << sockClient->peerAddress().toString();
+
+        sockClient->write("Bonjour client");
     }
 
-    void Widget::dataFromClient()
+    void Widget::dataIsComing()
     {
         QTcpSocket* sock = (QTcpSocket*)sender();
-        qDebug() << "Colis demandé par le client" << sock->peerAddress().toString() << ":"<< sock->readAll();
+        QByteArray colInfo = sock->readAll();
+        Package* newPack = new Package;
+        newPack->fromJSON(colInfo);
+        qDebug() << newPack->toJSON();
     }
 

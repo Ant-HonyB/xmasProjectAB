@@ -31,7 +31,7 @@ private:
     Ui::Widget *ui;
     QTcpSocket* mSocket;
     QString ip;
-    int port=4044;
+    int port=9090;
     QMap<QString,Package> mPackageTypes;
 };
 #endif // WIDGET_H
