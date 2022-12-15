@@ -13,10 +13,12 @@ public:
     ~Package();
     QByteArray toJSON();
     void fromJSON(QByteArray colInfo);
-    float volume();
+    float getVolume();
     void setWeight();
+    float getWeight();
     void setClient(QString cl);
     void setDestination(QString dstn);
+    QString getDestination();
 protected:
     float mHeight;
     float mLength;

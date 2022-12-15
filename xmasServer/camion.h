@@ -11,10 +11,11 @@ public:
     float totalVolume();
     float totalWeight();
     void transportVoucher(QString);
-    bool addPackage(Package);
+    void addPackage(Package*);
+    void setDestination(QString a);
 protected:
     QString mDestination;
-    QList<Package> mPackage;
+    QList<Package*> mPackage;
     float mMaxWeight;
     float mMaxVolume;
 };

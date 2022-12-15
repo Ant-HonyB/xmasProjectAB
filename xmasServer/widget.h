@@ -2,6 +2,7 @@
 #define WIDGET_H
 
 #include <QWidget>
+#include <QMap>
 #include <QList>
 #include <QTcpServer>
 #include <QTcpSocket>
@@ -27,6 +28,7 @@ private slots:
 private:
     Ui::Widget *ui;
     QTcpServer* mServer;
-    QList<Camion*> mListCamion;
+    QList <QString> destinationList {"allemagne","france","espagne"};
+    QMap<QString,Camion*> mListCamion;
 };
 #endif // WIDGET_H

@@ -18,7 +18,7 @@ Package::~Package()
 
 }
 
-float Package::volume()
+float Package::getVolume()
 {
     float myVol = mHeight*mLength*mWidth;
     return myVol;
@@ -27,6 +27,12 @@ float Package::volume()
 void Package::setWeight()
 {
     mWeight = ((float)(rand() % (500 - 10 + 1)) + 10.0)/10.0;
+    qDebug() << "myWeight init : " << mWeight;
+}
+
+float Package::getWeight()
+{
+    return mWeight;
 }
 
 void Package::setClient(QString cl)
@@ -39,11 +45,16 @@ void Package::setDestination(QString dstn)
     mCountry = dstn;
 }
 
+QString Package::getDestination()
+{
+    return mCountry;
+}
+
 QByteArray Package::toJSON()
 {
     QJsonObject o;
         o["client"] = mClient;
-        o["volume"] = this->volume();
+        o["volume"] = this->getVolume();
         o["country"] = mCountry;
         o["height"] = mHeight;
         o["width"] = mWidth;
@@ -54,9 +65,9 @@ QByteArray Package::toJSON()
         QByteArray sJson = d.toJson(QJsonDocument::Compact);
 
         //QJsonObject oRecu = QJsonDocument::fromJson(sJson).object();
-        //qDebug() << "Nom" << oRecu["client"].toString();
 
-    return  sJson;
+        //qDebug() << "Nom" << oRecu["client"].toString();
+    return  sJson; //just for compilation
 }
 
 void Package::fromJSON(QByteArray colInfo)
