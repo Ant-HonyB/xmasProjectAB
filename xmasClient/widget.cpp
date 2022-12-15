@@ -9,11 +9,10 @@ Widget::Widget(QWidget *parent)
     ui->setupUi(this);
 
     //1 : l'utilisateur se connecte
-    //QObject::connect(&soc,SIGNAL(connected()),this,SLOT(connexion_OK()));
     connect(ui->pbConnexion,SIGNAL(clicked()),this,SLOT(linkToIP()));
-    //connect(mSocket,SIGNAL(connected()),this,SLOT(imConnected()));
-    //connect(mSocket,SIGNAL(disconnected()),this,SLOT(imDisconnected()));
-    //connect(mSocket,SIGNAL(readyRead()),this,SLOT(dataIscoming()));
+
+    connect(mSocket,SIGNAL(connected()),this,SLOT(imConnected()));
+    connect(mSocket,SIGNAL(readyRead()),this,SLOT(dataIsComing()));
 
     //2 : paramètrage des colis en fonction du type possible (A, B, C)
     Package packA(13,14,15);
@@ -24,15 +23,9 @@ Widget::Widget(QWidget *parent)
     mPackageTypes.insert("colis C",packC);
 
     //3 : en fonction de la taille, de la destination et du nom du client, création d'un colis personnalisé
+    //et envoi
     connect(ui->BBconfirmation,SIGNAL(accepted()),this,SLOT(sendData()));
     connect(ui->BBconfirmation,SIGNAL(rejected()),this,SLOT(close()));
-
-
-
-    //4 : envoi du colis au serveur.
-
-
-
 }
 
 Widget::~Widget()
@@ -47,23 +40,14 @@ void Widget::linkToIP()
     qDebug() << "my ip : " << ip;
 }
 
-void Widget::clientConnected()
+void Widget::imConnected()
 {
-     /*QTcpSocket* sockClient = mServer->nextPendingConnection();
-     connect(sockClient,SIGNAL(readyRead()),this,SLOT(dataIsComing()));
-     connect(sockClient,SIGNAL(disconnected()),this,SLOT(clientDisconnected()));*/
+    mSocket->write("salut !!!");
 }
-void Widget::clientDisconnected()
-{
-    /*QTcpSocket* sock = (QTcpSocket*)sender();
-    mClients.removeAll(sock);
-    sock->deleteLater();*/
-}
+
 void Widget::dataIsComing()
 {
-    /*QTcpSocket* sock = (QTcpSocket*)sender();
-    mClients.removeAll(sock);
-    sock->deleteLater();*/
+    qDebug() << mSocket->readAll();
 }
 
 void Widget::sendOrder()
@@ -96,25 +80,3 @@ void Widget::sendOrder()
 
     mSocket->write(choosedPack.toJSON());
 }
-
-
-/*QStringList types = settings.childGroups();
-
-//ui->ComboDestination->addItems(settings.value("pays").toString().split(","));
-//ui->comboTaille->addItems(types);*/
-
-//ui->ComboDestination->addItems(settings.value("pays").toString().split(","));
-
-/*
-for(QString s : types)
-{
-    settings.beginGroup(s);
-    float width = settings.value("largeur").toFloat();
-    qDebug() << width;
-    float length =settings.value("longueur").toFloat();
-    float heigth = settings.value("hauteur").toFloat();
-    //mType[s]=
-    settings.endGroup();
-}
-//Package myPack(width,length,heigth);
-*/

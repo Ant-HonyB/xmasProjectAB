@@ -2,7 +2,6 @@
 #define WIDGET_H
 
 #include <QWidget>
-#include <QTcpServer>
 #include <QTcpSocket>
 #include <QMap>
 #include <QSettings>
@@ -24,8 +23,7 @@ public slots :
     void linkToIP();
 
 private slots:
-    void clientConnected();
-    void clientDisconnected();
+    void imConnected();
     void dataIsComing();
     void sendOrder();
 
