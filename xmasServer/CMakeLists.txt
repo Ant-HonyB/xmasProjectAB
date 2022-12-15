@@ -18,6 +18,10 @@ set(PROJECT_SOURCES
         widget.cpp
         widget.h
         widget.ui
+        camion.cpp
+        camion.h
+        package.h
+        package.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
