@@ -58,7 +58,7 @@ void Widget::sendOrder()
     QString myDestination = ui->ComboDestination->currentText();
     QString mySize = ui->comboTaille->currentText();
     QString myName = ui->editNomClient->text();
-    qDebug() << myName;
+
 
     if(ui->editNomClient->text().size()==0){return;}
 

@@ -17,6 +17,7 @@ public:
     void setWeight();
     float getWeight();
     void setClient(QString cl);
+    QString getClient();
     void setDestination(QString dstn);
     QString getDestination();
 protected:

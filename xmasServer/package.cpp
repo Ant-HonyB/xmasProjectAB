@@ -40,6 +40,11 @@ void Package::setClient(QString cl)
     mClient = cl;
 }
 
+QString Package::getClient()
+{
+    return mClient;
+}
+
 void Package::setDestination(QString dstn)
 {
     mCountry = dstn;
@@ -63,10 +68,6 @@ QByteArray Package::toJSON()
 
         QJsonDocument d(o);//transformer en texte
         QByteArray sJson = d.toJson(QJsonDocument::Compact);
-
-        //QJsonObject oRecu = QJsonDocument::fromJson(sJson).object();
-
-        //qDebug() << "Nom" << oRecu["client"].toString();
     return  sJson; //just for compilation
 }
 

@@ -2,10 +2,12 @@
 #define WIDGET_H
 
 #include <QWidget>
+#include <QTableWidget>
 #include <QMap>
 #include <QList>
 #include <QTcpServer>
 #include <QTcpSocket>
+#include <QTableWidgetItem>
 #include "camion.h"
 #include "package.h"
 
@@ -24,11 +26,12 @@ public:
 private slots:
     void clientConnected();
     void dataIsComing();
+    void infoToTable(Package* pack, QString destination);
 
 private:
     Ui::Widget *ui;
     QTcpServer* mServer;
-    QList <QString> destinationList {"allemagne","france","espagne"};
+    QList <QString> destinationList {"Allemagne","France","Espagne"};
     QMap<QString,Camion*> mListCamion;
 };
 #endif // WIDGET_H
